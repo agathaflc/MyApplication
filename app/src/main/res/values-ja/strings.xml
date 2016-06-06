@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="cardTitle">Want answers before you ?</string>
+    <string name="cardDetail">See etc</string>
+    <string name="cardAction">Get asd</string>
+</resources>
