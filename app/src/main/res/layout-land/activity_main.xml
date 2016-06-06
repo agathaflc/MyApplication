@@ -12,7 +12,7 @@
         android:id="@+id/alpha"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        class="com.example.lalamove.myapplication.AlphaFragment" />
+        class="com.example.lalamove.myapplication.ItemListActivity" />
 
 
     <fragment
@@ -20,6 +20,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        class="com.example.lalamove.myapplication.OmegaFragment" />
+        class="com.example.lalamove.myapplication.ItemDetailFragment" />
 
 </LinearLayout>
