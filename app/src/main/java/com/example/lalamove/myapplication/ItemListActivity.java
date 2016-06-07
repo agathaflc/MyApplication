@@ -2,6 +2,8 @@ package com.example.lalamove.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +38,8 @@ public class ItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+
+    // TODO: why is there no onAttach() here?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,17 +95,41 @@ public class ItemListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mIdView.setText(mValues.get(position).name);
+            holder.mContentView.setText(mValues.get(position).details);
             //System.out.print("asdfg " + mValues.get(position).content); // try printing out
-            Log.i("asdfg", mValues.get(position).content);
+            Log.i("asdfg", mValues.get(position).details);
+
+            /*
+            // ADDED FOR RAGE COMICS
+            int[] mImageResIds;
+            String[] mNames;
+//            String[] mDescriptions;
+//            String[] mUrls;
+
+            // Get rage face names
+            final Resources resources  = getResources();
+            mNames = resources.getStringArray(R.array.names);
+//            mDescriptions = resources.getStringArray(R.array.descriptions);
+//            mUrls = resources.getStringArray(R.array.urls);
+
+            // Get rage face images.
+            final TypedArray typedArray = resources.obtainTypedArray(R.array.images);
+            final int imageCount = mNames.length;
+            mImageResIds = new int[imageCount];
+            for (int i = 0; i < imageCount; i++) {
+                mImageResIds[i] = typedArray.getResourceId(i, 0);
+            }
+            typedArray.recycle();
+            */
+
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.name);
                         ItemDetailFragment fragment = new ItemDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -110,7 +138,7 @@ public class ItemListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, ItemDetailActivity.class);
-                        intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.name);
 
                         context.startActivity(intent);
                     }
@@ -118,8 +146,8 @@ public class ItemListActivity extends AppCompatActivity {
             });
         }
 
-        //@Override
-        public int getIteCount() {
+        @Override
+        public int getItemCount() {
             return mValues.size();
         }
 
