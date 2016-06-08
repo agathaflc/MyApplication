@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lalamove.myapplication.dummy.DummyContent;
@@ -49,7 +50,7 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.details);
+                appBarLayout.setTitle(mItem.name);
             }
         }
     }
@@ -61,7 +62,9 @@ public class ItemDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
+            ((TextView) rootView.findViewById(R.id.tvItemDetail)).setText(mItem.details);
+            ((TextView) rootView.findViewById(R.id.tvUrl)).setText(mItem.url);
+            ((ImageView) rootView.findViewById(R.id.ivBigIcon)).setImageResource(mItem.imageId);
         }
 
         return rootView;

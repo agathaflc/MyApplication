@@ -1,9 +1,46 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context="com.example.lalamove.myapplication.ItemDetailFragment" />
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+        <ImageView
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:id="@+id/ivBigIcon"
+            android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10sp" />
+
+        <TextView
+            android:id="@+id/tvItemDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="20sp"
+            android:layout_below="@+id/ivBigIcon"
+            android:layout_alignLeft="@+id/ivBigIcon"
+            android:layout_alignStart="@+id/ivBigIcon"
+            android:layout_alignRight="@+id/ivBigIcon"
+            android:layout_alignEnd="@+id/ivBigIcon"
+            android:padding="@dimen/card_padding" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvUrl"
+            android:layout_below="@id/tvItemDetail"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/ivBigIcon"
+            android:layout_alignStart="@+id/ivBigIcon"
+            android:layout_alignRight="@+id/ivBigIcon"
+            android:layout_alignEnd="@+id/ivBigIcon"
+            android:padding="@dimen/card_padding"
+            android:autoLink="web" />
+
+</RelativeLayout>
+

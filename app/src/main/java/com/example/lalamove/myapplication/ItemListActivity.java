@@ -139,6 +139,7 @@ public class ItemListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
+                        // TODO: how to change the width of the list when orientation is landscape?
                         Bundle arguments = new Bundle();
                         arguments.putString(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.name);
                         ItemDetailFragment fragment = new ItemDetailFragment();

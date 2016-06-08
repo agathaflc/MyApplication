@@ -10,13 +10,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
             android:id="@+id/ivIcon"
             android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentTop="true"/>
 
         <TextView
             android:id="@+id/content"
@@ -28,7 +26,8 @@
             android:layout_alignParentEnd="true"
             android:layout_margin="10dp"
             android:layout_toRightOf="@+id/ivIcon"
-            android:layout_toEndOf="@+id/ivIcon" />
+            android:layout_toEndOf="@+id/ivIcon"
+            android:textSize="20sp" />
     </RelativeLayout>
 
 </LinearLayout>

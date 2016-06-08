@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -82,7 +83,8 @@ public class DummyContent {
 
         // Get rage face names
 
-        return new DummyItem(mImageResIds[position], mNames[position], mDescriptions[position]);
+        return new DummyItem(mImageResIds[position], mNames[position], 
+                mDescriptions[position], mUrls[position]);
     }
 
 //    private static String makeDetails(int position) {
@@ -102,11 +104,13 @@ public class DummyContent {
         public final int imageId;
         public final String name;
         public final String details;
+        public final String url;
 
-        public DummyItem(int imageId, String name, String details) {
+        public DummyItem(int imageId, String name, String details, String url) {
             this.imageId = imageId;
             this.name = name;
             this.details = details;
+            this.url = url;
         }
 
         @Override
