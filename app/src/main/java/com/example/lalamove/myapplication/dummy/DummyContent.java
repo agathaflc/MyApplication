@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 
+import com.example.lalamove.myapplication.ItemListActivity;
 import com.example.lalamove.myapplication.R;
 
 import java.util.ArrayList;
@@ -39,28 +40,17 @@ public class DummyContent {
     private static String[] mDescriptions;
     private static String[] mUrls;
 
-    public DummyContent(Context context)
-    {
-        this.context=context;
+//    public DummyContent(Context context)
+//    {
+//        this.context=context;
+//    }
+    public DummyContent(){
+
     }
 
     // TODO: WHAT IS THIS AND WHY DOES IT HAVE TO BE STATIC?
     static {
-        // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
-        }
-    }
-
-    private static void addItem(DummyItem item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.name, item);
-    }
-
-    private static DummyItem createDummyItem(int position) {
-        // TODO: fix the parameters: imageId, name, details
-
-
+        context = ItemListActivity.getContext();
         // Get rage face names
         final Resources resources  = context.getResources();
         mNames = resources.getStringArray(R.array.names);
@@ -75,6 +65,22 @@ public class DummyContent {
             mImageResIds[i] = typedArray.getResourceId(i, 0);
         }
         typedArray.recycle();
+        // Add some sample items.
+        for (int i = 0; i < COUNT; i++) {
+            addItem(createDummyItem(i));
+        }
+    }
+
+    private static void addItem(DummyItem item) {
+        ITEMS.add(item);
+        ITEM_MAP.put(item.name, item);
+    }
+
+    private static DummyItem createDummyItem(int position) {
+        // TODO: fix the parameters: imageId, name, details
+
+
+        // Get rage face names
 
         return new DummyItem(mImageResIds[position], mNames[position], mDescriptions[position]);
     }

@@ -12,22 +12,11 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/iv1"
+            android:id="@+id/ivIcon"
             android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="test"
-            android:id="@+id/tvTest"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/iv1"
-            android:layout_toRightOf="@+id/iv1"
-            android:layout_marginLeft="10dp"
-            android:layout_margin="10dp" />
 
         <TextView
             android:id="@+id/content"
@@ -37,9 +26,9 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/tvTest"
-            android:layout_toEndOf="@+id/tvTest"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/ivIcon"
+            android:layout_toEndOf="@+id/ivIcon" />
     </RelativeLayout>
 
 </LinearLayout>

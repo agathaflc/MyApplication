@@ -1,13 +1,11 @@
 package com.example.lalamove.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -38,6 +37,7 @@ public class ItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private static Activity instance;
 
     // TODO: why is there no onAttach() here?
 
@@ -45,6 +45,8 @@ public class ItemListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+        instance = this;
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,9 +61,11 @@ public class ItemListActivity extends AppCompatActivity {
             }
         });
 
+        // TODO: What does this bunch of code do?
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        //until here
 
         if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
@@ -72,6 +76,13 @@ public class ItemListActivity extends AppCompatActivity {
         }
     }
 
+    // http://stackoverflow.com/questions/22371124/getting-activity-context-into-a-non-activity-class-android
+    public static Context getContext()
+    {
+        return instance.getApplicationContext();
+    }
+
+    // TODO: What is this? What is @NonNull?
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
     }
@@ -95,8 +106,8 @@ public class ItemListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).name);
-            holder.mContentView.setText(mValues.get(position).details);
+            holder.mContentView.setText(mValues.get(position).name);
+            holder.mImageView.setImageResource(mValues.get(position).imageId);
             //System.out.print("asdfg " + mValues.get(position).content); // try printing out
             Log.i("asdfg", mValues.get(position).details);
 
@@ -140,6 +151,7 @@ public class ItemListActivity extends AppCompatActivity {
                         Intent intent = new Intent(context, ItemDetailActivity.class);
                         intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, holder.mItem.name);
 
+                        // TODO: what is the context here? How does it specify which activity to start?
                         context.startActivity(intent);
                     }
                 }
@@ -153,14 +165,14 @@ public class ItemListActivity extends AppCompatActivity {
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
-            public final TextView mIdView;
             public final TextView mContentView;
+            public final ImageView mImageView;
             public DummyContent.DummyItem mItem;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.tvTest);
+                mImageView = (ImageView) view.findViewById(R.id.ivIcon);
                 mContentView = (TextView) view.findViewById(R.id.content);
             }
 
