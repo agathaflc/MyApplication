@@ -13,7 +13,6 @@
             android:layout_width="100sp"
             android:layout_height="100sp"
             android:id="@+id/ivIcon"
-            android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
             android:layout_alignParentTop="true"/>
 
         <TextView

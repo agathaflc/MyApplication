@@ -9,7 +9,6 @@
             android:layout_width="200sp"
             android:layout_height="200sp"
             android:id="@+id/ivBigIcon"
-            android:src="@drawable/abc_scrubber_control_to_pressed_mtrl_000"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentLeft="true"
